@@ -18,18 +18,18 @@ namespace VerifyId_Test
         }
 
         [TestMethod]
-        public async Task TestValidLogin()
+        public void TestValidLogin()
         {
             var key = new VerifyId.VerificationService.Authenticate();
-            var apiKey = await key.Excecute(_username, _password);
+            var apiKey = key.Excecute(_username, _password);
             Assert.IsTrue(!string.IsNullOrEmpty(apiKey.Result.API_KEY));
         }
 
         [TestMethod]
-        public async Task TestInvalidLogin()
+        public  void TestInvalidLogin()
         {
             var key = new VerifyId.VerificationService.Authenticate();
-            var apiKey = await key.Excecute(_username, "WrongPassword");
+            var apiKey =  key.Excecute("WrongUsername", "WrongPassword");
             Assert.IsTrue(apiKey.Status.Equals("Failure"));
         }
     }

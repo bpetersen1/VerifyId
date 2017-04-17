@@ -6,6 +6,11 @@ namespace VerifyId.VerificationService
 {
     public class MyCredits
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="apiKey"></param>
+        /// <returns></returns>
         public Credit GetAvailableCredits(string apiKey)
         {
             RestRequest request = new RestRequest(VerifyIdConfig.MyCredits) { Method = Method.GET };

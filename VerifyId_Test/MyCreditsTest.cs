@@ -13,10 +13,10 @@ namespace VerifyId_Test
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
         [TestMethod]
-        public async Task TestResponseForMyCredits()
+        public void TestResponseForMyCredits()
         {
             var service = new VerifyId.VerificationService.Authenticate();
-            var apikey = await service.Excecute(GetCredentials.Username, GetCredentials.Password);
+            var apikey = service.Excecute(GetCredentials.Username, GetCredentials.Password);
             var mycredit = new VerifyId.VerificationService.MyCredits();
             var result = mycredit.GetAvailableCredits(apikey.Result.API_KEY);
             Assert.IsTrue(result.Result.credits > 1);

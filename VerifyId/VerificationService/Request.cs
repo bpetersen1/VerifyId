@@ -7,9 +7,9 @@ using RestSharp.Portable.HttpClient;
 
 namespace VerifyId.VerificationService
 {
-    public class Request
+    internal class Request
     {
-        public T Execute<T>(IRestRequest request) where T : class
+        internal T Execute<T>(IRestRequest request) where T : class
         {
             IRestClient client = new RestClient(Common.VerifyIdConfig.VerifyIdBaseUrl);
             request.AddHeader("Accept", "application/json");
