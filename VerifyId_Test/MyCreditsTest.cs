@@ -15,13 +15,12 @@ namespace VerifyId_Test
         [TestMethod]
         public async Task TestResponseForMyCredits()
         {
-            
             var service = new VerifyId.VerificationService.Authenticate();
-            string apikey = await service.Excecute(GetCredentials.Username, GetCredentials.Password);
+            var apikey = await service.Excecute(GetCredentials.Username, GetCredentials.Password);
 
             var mycredit  = new VerifyId.VerificationService.MyCredits();
 
-            var result = mycredit.GetAvailableCredits(apikey);
+            var result = mycredit.GetAvailableCredits(apikey.Result.API_KEY);
 
             Assert.IsTrue(result.Result.credits > 1);
 

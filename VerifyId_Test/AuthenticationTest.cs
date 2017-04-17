@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,16 +14,23 @@ namespace VerifyId_Test
         {
             _password = GetCredentials.Password;
             _username =  GetCredentials.Username;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
 
         [TestMethod]
         public async Task TestValidLogin()
         {
-            
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var key = new VerifyId.VerificationService.Authenticate();
-            string apiKey = await key.Excecute(_username, _password);
-            Assert.IsTrue(!string.IsNullOrEmpty(apiKey));
+            var apiKey = await key.Excecute(_username, _password);
+            Assert.IsTrue(!string.IsNullOrEmpty(apiKey.Result.API_KEY));
+        }
+
+        [TestMethod]
+        public async Task TestInvalidLogin()
+        {
+            var key = new VerifyId.VerificationService.Authenticate();
+            var apiKey = await key.Excecute(_username, "WrongPassword");
+            Assert.IsTrue(apiKey.Status.Equals("Failure"));
         }
     }
 }
