@@ -90,9 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VerifyId\VerifyId.csproj">
+    <ProjectReference Include="..\VerifyId\VerifyId.Net.csproj">
       <Project>{b2ea70c4-ce66-40d4-8b73-82482fba6d89}</Project>
-      <Name>VerifyId</Name>
+      <Name>VerifyId.Net</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
