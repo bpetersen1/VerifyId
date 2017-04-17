@@ -17,13 +17,9 @@ namespace VerifyId_Test
         {
             var service = new VerifyId.VerificationService.Authenticate();
             var apikey = await service.Excecute(GetCredentials.Username, GetCredentials.Password);
-
-            var mycredit  = new VerifyId.VerificationService.MyCredits();
-
+            var mycredit = new VerifyId.VerificationService.MyCredits();
             var result = mycredit.GetAvailableCredits(apikey.Result.API_KEY);
-
             Assert.IsTrue(result.Result.credits > 1);
-
         }
     }
 }
